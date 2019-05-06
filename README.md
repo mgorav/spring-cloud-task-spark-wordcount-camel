@@ -6,7 +6,7 @@ integrate with Spark. This brings:
 2. A simple message oriented integration with Apache Spark henece loose coupling
 3. Observability ese using Spring Admin, Consul etc etc
 ```
- The complete integration can be deployed to Spark cluster
+ The complete integration can be deployed to Spark cluster as Uber Jar
 ```
 
 ```java
