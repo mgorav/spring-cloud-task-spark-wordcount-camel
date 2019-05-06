@@ -1,7 +1,13 @@
 # Spring Cloud Task Spark Word Count Using Apache Camel
 
 A demonstration of short lived micro-services which counts number of words. It uses Apache Camel routing mechanism to
-integrate with Spark.
+integrate with Spark. This brings:
+1. Power of DI using Spring Boot task, hence programing ease
+2. A simple message oriented integration with Apache Spark henece loose coupling
+3. Observability ese using Spring Admin, Consul etc etc
+```
+ The complete integration can be deployed to Spark cluster
+```
 
 ```java
  // JavaRDD example with callback send via producer
