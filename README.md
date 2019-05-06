@@ -9,6 +9,10 @@ integrate with Spark. This brings:
  The complete integration can be deployed to Spark cluster as Uber Jar
 ```
 
+## Code Walk Through
+
+### Apache Camel Configuration
+
 ```java
  // JavaRDD example with callback send via producer
  String sparkUri1 = "spark:rdd?rdd=#myRdd";
@@ -24,8 +28,8 @@ integrate with Spark. This brings:
 
 ```
 
-## Spring Configuration
-### JavaRDD
+### Spring Configuration
+#### JavaRDD
 ```java
     
     @Bean
@@ -45,7 +49,7 @@ integrate with Spark. This brings:
 
 ```
 
-### DataSet aka DataFrame
+#### DataSet aka DataFrame
 ```java
     
     @Bean
