@@ -20,7 +20,7 @@ integrate with Spark.
 
 ## Spring Configuration
 ### JavaRDD
-``java
+```java
     
     @Bean
     public JavaSparkContext javaSparkContext() {
@@ -28,30 +28,32 @@ integrate with Spark.
         JavaSparkContext sc = new JavaSparkContext(conf);
         return sc;
     }
- `` 
- ``java 
+ ```
+ 
+```java
      
      @Bean
      JavaRDDLike<String, JavaRDD<String>> myRdd(JavaSparkContext sparkContext, @Value("classpath:testrdd.txt") Resource resource) throws IOException {
          return sparkContext.textFile(resource.getURI().getPath());
      }  
 
-``
+```
 
 ### DataSet aka DataFrame
-``java
+```java
     
     @Bean
     public SparkSession sparkSession() {
         return SparkSession
                 .builder().appName("wordcount").master("local[*]").getOrCreate();
     }
- `` 
- ``java 
+```
+
+```java
      
     @Bean
     Dataset<String> fileDataFrame(SparkSession sparkSession, @Value("classpath:testrdd.txt") Resource resource) throws IOException {
         return sparkSession.read().textFile(resource.getURI().getPath());
     }  
 
-``
+```
