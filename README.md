@@ -18,7 +18,7 @@ integrate with Spark.
 
 ```
 
-## Configuration
+## Spring Configuration
 ### JavaRDD
 ``java
     
