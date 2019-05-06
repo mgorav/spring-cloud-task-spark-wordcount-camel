@@ -17,3 +17,41 @@ integrate with Spark.
   output = producer.requestBodyAndHeader(sparkDataFrameUri, null, SPARK_DATAFRAME_CALLBACK_HEADER, new SerializableDataFrameCallback(), String.class);
 
 ```
+
+## Configuration
+### JavaRDD
+``java
+    
+    @Bean
+    public JavaSparkContext javaSparkContext() {
+        SparkConf conf = new SparkConf().setAppName("wordcount").setMaster("local[*]");
+        JavaSparkContext sc = new JavaSparkContext(conf);
+        return sc;
+    }
+ `` 
+ ``java 
+     
+     @Bean
+     JavaRDDLike<String, JavaRDD<String>> myRdd(JavaSparkContext sparkContext, @Value("classpath:testrdd.txt") Resource resource) throws IOException {
+         return sparkContext.textFile(resource.getURI().getPath());
+     }  
+
+``
+
+### DataSet aka DataFrame
+``java
+    
+    @Bean
+    public SparkSession sparkSession() {
+        return SparkSession
+                .builder().appName("wordcount").master("local[*]").getOrCreate();
+    }
+ `` 
+ ``java 
+     
+    @Bean
+    Dataset<String> fileDataFrame(SparkSession sparkSession, @Value("classpath:testrdd.txt") Resource resource) throws IOException {
+        return sparkSession.read().textFile(resource.getURI().getPath());
+    }  
+
+``
